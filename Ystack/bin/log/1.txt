@@ -1,0 +1,29 @@
++---------------------+----------------------------------+
+| Field               | Value                            |
++---------------------+----------------------------------+
+| domain_id           | default                          |
+| enabled             | True                             |
+| id                  | 26ef2cb818314b90ab8c6f700f040b93 |
+| name                | Ystack                           |
+| options             | {}                               |
+| password_expires_at | None                             |
++---------------------+----------------------------------+
++-----------+----------------------------------+
+| Field     | Value                            |
++-----------+----------------------------------+
+| domain_id | None                             |
+| id        | 8f2e99d2d7464334bdc1979aef21a17e |
+| name      | user                             |
++-----------+----------------------------------+
+Password: 
+usage: openstack token issue [-h] [-f {json,shell,table,value,yaml}]
+                             [-c COLUMN] [--max-width <integer>]
+                             [--print-empty] [--noindent] [--prefix PREFIX]
+openstack token issue: error: unrecognized arguments: --password Ystack
+Password: 
+usage: openstack token issue [-h] [-f {json,shell,table,value,yaml}]
+                             [-c COLUMN] [--max-width <integer>]
+                             [--print-empty] [--noindent] [--prefix PREFIX]
+openstack token issue: error: unrecognized arguments: --password Ystack
+./keystone.sh: line 71: /root/admin-openrc: No such file or directory
+Missing value auth-url required for auth plugin password

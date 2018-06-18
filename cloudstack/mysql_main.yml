@@ -1,0 +1,25 @@
+- name: Ensure mysql server is installed
+  yum: name=mysql-server state=present
+- name: Ensure mysql python is installed
+  yum: name=MySQL-python state=present
+- name: Ensure selinux python bindings are installed
+  yum: name=libselinux-python state=present
+- name: Ensure cloudstack specfic my.cnf lines are present
+  lineinfile: dest=/etc/my.cnf regexp='$item' insertafter="symbolic-links=0" line='$item'
+with\_items:
+- skip-name-resolve
+- default-time-zone='+00:00'
+- innodb\_rollback\_on\_timeout=1
+- innodb\_lock\_wait\_timeout=600
+- max\_connections=350
+- log_bin=mysql-bin
+- binlog-format='ROW'
+- name: Ensure MySQL service is started
+  service: name=mysqld state=started
+- name: Ensure MySQL service is enable at boot
+  service: name=mysqld enabled=yes
+- name: Ensure root password is set
+  mysql\_user: user=root password=$mysql\_root\_password host=localhost
+  ignore\_errors: true
+- name: Ensure root has sufficient privileges
+  mysql\_user: login\_user=root login\_password=$mysql\_root\_password user=root host=% password=$mysql\_root\_password priv=\*.\*:GRANT,ALL state=present
